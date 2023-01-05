@@ -1,0 +1,125 @@
+.bg-banner {
+  background: url(../assets/img/banner.png);
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  background-position: center;
+  padding: 27vh 9vw;
+  .title-group {
+    position: absolute;
+    width: 385px;
+    height: 112px;
+    top: 25vh;
+    left: 3vw;
+    font-family: "Druk Text Wide";
+    font-style: normal;
+    text-align: left;
+    .title {
+      color: #fff;
+      font-size: 48px;
+      margin-bottom: 0;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-weight: 700;
+    }
+  }
+}
+
+.logo {
+  background: url(../assets/img/Frame.png);
+  background-size: contain;
+  width: 112px;
+  height: 28px;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 8vh;
+  left: 3vw;
+}
+
+.stepper-panel {
+  mat-form-field {
+    width: 100%;
+  }
+  h1 {
+    font-weight: 700;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0.428571px;
+    text-transform: uppercase;
+    margin-bottom: 0;
+    line-height: 46px;
+  } 
+  .btn-group {
+    position: absolute;
+    right: 0;
+    top: 15px;
+    button {
+      padding: 0px 10px;
+      font-size: 32px;
+      height: 35px;
+      width: 35px;
+      line-height: 1;
+      margin-left: 5px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      color: #132EB1;
+      background: transparent;
+      &[disabled] {
+        color: rgba(0, 0, 0, 0.1);
+      }
+      &.plus-btn {
+        font-size: 22px;
+      }
+    }
+  }
+}
+
+.stepper-panel {
+  width: 100%;
+}
+
+.detail-section {
+  width: 42%;
+  margin: 25px auto 0;
+  .logo-summary {
+    background: url(../assets/img/Group.png);
+    background-size: contain;
+    width: 120px;
+    height: 28px;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+  }
+  .refresh {
+    background: url(../assets/img/Group1.png);
+    background-size: contain;
+    width:35px;
+    height: 35px;
+    background-repeat: no-repeat;
+    margin: 30px auto 22px;
+  }
+  p, h1 {
+    text-align: center;
+  }
+  .form-data {
+    margin:15px auto 0;
+  }
+}
+ p {
+   font-weight: 450;
+ }
+
+.next-btn {
+  width: 100%;
+  background: #132EB1;
+  height: 57px;
+  color: #fff;
+  border: none;
+  font-weight: 700;
+  font-size: 11px;
+  line-height: 14px;
+  letter-spacing: 0.396429px;
+  text-transform: uppercase;
+  &.back-btn {
+    width: 277px;
+  }
+}

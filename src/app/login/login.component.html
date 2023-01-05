@@ -1,0 +1,106 @@
+<div class="stepper">
+  <div class="row">
+    <div class="col-md-4" *ngIf="!showQuote">
+      <div class="bg-banner">
+        <div class="logo"></div>
+        <div class="title-group">
+          <h1 class="title">Get </h1>
+          <h1 class="title">A Quote</h1>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <mat-stepper class="m-t-20 stepper-panel" linear #stepper  *ngIf="!showQuote">
+        <mat-step [stepControl]="firstFormGroup">
+          <form [formGroup]="firstFormGroup">
+            <ng-template matStepLabel><h1>Step 1 </h1><p>Tell us about you</p></ng-template>
+            <div class="col-md-12">
+              <mat-form-field appearance="fill">
+                <mat-label>Your Name</mat-label>
+                <input matInput placeholder="Your Name" minlength="3" formControlName="name" required>
+              </mat-form-field>
+            </div>
+            <div class="col-md-12">
+              <mat-form-field appearance="fill">
+                <mat-label>Organisation Name</mat-label>
+                <input matInput placeholder="Organisation Name" minlength="3" formControlName="organisation" required>
+              </mat-form-field>
+            </div>
+            <div class="col-md-12">
+              <mat-form-field appearance="fill">
+                <mat-label>Phone Number</mat-label>
+                <input matInput placeholder="Phone Number" minlength="10" type="number" formControlName="phone" required>
+              </mat-form-field>
+            </div>
+            <div class="col-md-12">
+              <mat-form-field appearance="fill">
+                <mat-label>Email Address</mat-label>
+                <input matInput placeholder="Email Address" type="email" formControlName="email" required>
+              </mat-form-field>
+            </div>
+            <div class="col-md-12">
+              <button mat-button matStepperNext class="next-btn m-t-10">NEXT STEP</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup" [optional]="isOptional">
+          <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel><h1>Step 2 </h1><p>Tell us about your practice(s).</p></ng-template>
+            <div class="col-md-12 position-relative">
+              <mat-form-field appearance="fill">
+                <mat-label>Amount of practices</mat-label>
+                <input matInput required [value]="getPracticeFormArrayLength()">
+              </mat-form-field>
+              <div class="btn-group">
+                <button [disabled]="getPracticeFormArrayLength() === 0" (click)="removePractices()"> - </button>
+                <button class="plus-btn" (click)="addPractices()"> + </button>
+              </div>
+            </div>
+            <div formArrayName="practices">
+            <div class="col-md-12" *ngFor="let practice of getPracticeFormArray().controls; let i=index" [formGroupName]="i">
+              <mat-form-field appearance="fill">
+                <mat-label>Practice #{{i+1}} Name</mat-label>
+                <input matInput formControlName="practiceName" placeholder="" required>
+              </mat-form-field>
+            </div>
+            </div>
+            <div>
+              <button mat-button matStepperNext class="next-btn m-t-10" [disabled]="secondFormGroup.invalid || getPracticeFormArrayLength() === 0" (click)="getQuote()">SUBMIT & GET QUOTE</button>
+            </div>
+          </form>
+        </mat-step>
+      </mat-stepper>
+    </div>
+  </div>
+  <div class="m-t-20 detail-section" *ngIf="showQuote">
+    <div class="row">
+      <div class="col-m-12">
+        <div class="logo-summary"></div>
+        <div class="refresh"></div>
+        <h1>Generating Quote...</h1>
+        <p class="m-t-15 p-40">A Zenith IT specialist is creating a custom quote for you and will reach out to you as soon as it is ready.</p>
+        <p class="m-b-0"> Cheers,</p>
+        <p> Team Zenith</p>
+      </div>
+      <div class="col-md-12 m-t-20 text-center">
+        <button class="next-btn back-btn" (click)="showQuote = false">Back to the Home Page</button>
+      </div>
+    </div>
+    <div class="row form-data m-t-15">
+      <div class="col-md-6">Name</div>
+      <div class="col-md-6">{{firstFormData.name}}</div>
+      <div class="col-md-6">Organisation</div>
+      <div class="col-md-6">{{firstFormData.organisation}}</div>
+      <div class="col-md-6">Phone</div>
+      <div class="col-md-6">{{firstFormData.phone}}</div>
+      <div class="col-md-6">Email</div>
+      <div class="col-md-6">{{firstFormData.email}}</div>
+      <div *ngFor="let practice of secondFormData.practices">
+        <div class="row">
+          <div class="col-md-6">Practice name</div>
+          <div class="col-md-6">{{practice.practiceName}} </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
